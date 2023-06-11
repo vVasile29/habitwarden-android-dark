@@ -39,9 +39,8 @@ const triggerWaterNotifications = async () => {
     for (let i = 0; i < hours.length; i++) {
         await Notifications.scheduleNotificationAsync({
             content: {
-                title: "Hast du durst?",
-                body: "Trink dein Wasser!",
-                data: {data: "goes here"},
+                title: "Durstig?",
+                body: "Solltest du sein! Öffne mich und trinke ein Glas!",
             },
             trigger: {
                 hour: hours.at(i),
@@ -61,9 +60,8 @@ const triggerSquatsNotifications = async () => {
     for (let i = 0; i < hours.length; i++) {
         await Notifications.scheduleNotificationAsync({
             content: {
-                title: "Bist du sportlich unterwegs?",
-                body: "Mach deine Squats!",
-                data: {data: "goes here"},
+                title: "Hoch mit dir, faule Socke!",
+                body: " \"Nicht schon wieder\"... oh doch! Öffne mich, ran an den Speck!",
             },
             trigger: {
                 hour: hours.at(i),
@@ -83,9 +81,8 @@ const triggerMeditationNotifications = async () => {
     for (let i = 0; i < hours.length; i++) {
         await Notifications.scheduleNotificationAsync({
             content: {
-                title: "Bist du entspannt?",
-                body: "Meditiere!",
-                data: {data: "goes here"},
+                title: "Ommmm....",
+                body: "Komm mal runter, öffne mich und meditiere, für DICH!",
             },
             trigger: {
                 hour: hours.at(i),

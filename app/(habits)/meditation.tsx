@@ -36,7 +36,7 @@ export default function Meditation() {
     }
 
     async function handlePressNotDone() {
-        await saveData(WATER, false, lieOnDone, wantedToQuit, habit?.pointsPerTask!);
+        await saveData(MEDITATION, false, lieOnDone, wantedToQuit, habit?.pointsPerTask!);
         router.replace("/habits");
     }
 

@@ -35,7 +35,7 @@ export default function Squats() {
     }
 
     async function handlePressNotDone() {
-        await saveData(WATER, false, lieOnDone, wantedToQuit, habit?.pointsPerTask!);
+        await saveData(SQUATS, false, lieOnDone, wantedToQuit, habit?.pointsPerTask!);
         router.replace("/habits");
     }
 
