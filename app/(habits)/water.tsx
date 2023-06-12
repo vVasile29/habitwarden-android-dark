@@ -1,7 +1,4 @@
-import {View, Button, Text, Pressable, Alert} from 'react-native';
 import React, {useState} from "react";
-import moment from 'moment';
-import 'moment/locale/de';
 import {useRouter} from "expo-router";
 import {useFetchPointsPerTask, useSaveData, WATER} from "../(tabs)/habits";
 import {Habit} from "../../components/HabitSummary";
