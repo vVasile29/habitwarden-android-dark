@@ -17,6 +17,7 @@ export default function Squats() {
     const [habit, setHabit] = useState<Habit>();
     const [lieOnDone, setLieOnDone] = useState(false);
     const [wantedToQuit, setWantedToQuit] = useState(false);
+    const [habitScreenButtonsDisabled, setHabitScreenButtonsDisabled] = useState(false);
     const router = useRouter();
 
     const habitPromise = useFetchPointsPerTask(SQUATS);
@@ -29,12 +30,14 @@ export default function Squats() {
     }
 
     async function handlePressYesOnDone() {
+        setHabitScreenButtonsDisabled(true);
         setLiePopupVisible(false)
         await saveData(habit?.name!, true, lieOnDone, wantedToQuit, habit?.pointsPerTask!);
         setShowPointsPopupVisible(true);
     }
 
     async function handlePressNotDone() {
+        setHabitScreenButtonsDisabled(true);
         await saveData(SQUATS, false, lieOnDone, wantedToQuit, habit?.pointsPerTask!);
         router.replace("/habits");
     }
@@ -72,6 +75,7 @@ export default function Squats() {
             handlePressNotDone={handlePressNotDone}
             showPointsPopupVisible={showPointsPopupVisible}
             handleShowPointsClose={handleShowPointsClose}
+            habitScreenButtonsDisabled={habitScreenButtonsDisabled}
         />
     );
 }

@@ -28,6 +28,7 @@ interface HabitScreenWithPopupProps {
     handlePressNotDone: () => Promise<void>;
     showPointsPopupVisible: boolean;
     handleShowPointsClose: () => Promise<void>;
+    habitScreenButtonsDisabled: boolean
 }
 
 export default function HabitScreenWithPopups(props: HabitScreenWithPopupProps){
@@ -43,6 +44,7 @@ export default function HabitScreenWithPopups(props: HabitScreenWithPopupProps){
                 setWantedToQuit={props.setWantedToQuit}
                 setLosePointsWarningPopupVisible={props.setLosePointsWarningPopupVisible}
                 logo={props.logo}
+                habitScreenButtonsEnabled={props.habitScreenButtonsDisabled}
             />
             <LiePopup
                 liePopupVisible={props.liePopupVisible}

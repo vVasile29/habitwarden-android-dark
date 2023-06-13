@@ -13,6 +13,7 @@ interface HabitScreenProps {
     setWantedToQuit: React.Dispatch<React.SetStateAction<boolean>>;
     setLosePointsWarningPopupVisible: React.Dispatch<React.SetStateAction<boolean>>;
     logo: any;
+    habitScreenButtonsDisabled: boolean
 }
 
 export default function HabitScreen(props: HabitScreenProps) {
@@ -53,6 +54,7 @@ export default function HabitScreen(props: HabitScreenProps) {
                     borderWidth: 3,
                     borderRadius: 15,
                 }}
+                disabled={props.habitScreenButtonsDisabled}
                 onPress={() => {
                     props.handlePressDone();
                 }}
@@ -66,6 +68,7 @@ export default function HabitScreen(props: HabitScreenProps) {
                     props.setIsPlaying(false);
                     props.setLosePointsWarningPopupVisible(true);
                 }}>
+                disabled={props.habitScreenButtonsDisabled}
                 <Text style={{color: "lightgrey", textDecorationLine: "underline"}}>Abbrechen</Text>
             </Pressable>
         </View>
