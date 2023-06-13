@@ -44,7 +44,7 @@ export default function HabitScreenWithPopups(props: HabitScreenWithPopupProps){
                 setWantedToQuit={props.setWantedToQuit}
                 setLosePointsWarningPopupVisible={props.setLosePointsWarningPopupVisible}
                 logo={props.logo}
-                habitScreenButtonsEnabled={props.habitScreenButtonsDisabled}
+                habitScreenButtonsDisabled={props.habitScreenButtonsDisabled}
             />
             <LiePopup
                 liePopupVisible={props.liePopupVisible}

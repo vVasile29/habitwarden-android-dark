@@ -67,8 +67,9 @@ export default function HabitScreen(props: HabitScreenProps) {
                     props.setWantedToQuit(true);
                     props.setIsPlaying(false);
                     props.setLosePointsWarningPopupVisible(true);
-                }}>
+                }}
                 disabled={props.habitScreenButtonsDisabled}
+            >
                 <Text style={{color: "lightgrey", textDecorationLine: "underline"}}>Abbrechen</Text>
             </Pressable>
         </View>
