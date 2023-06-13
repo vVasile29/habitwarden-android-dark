@@ -1,4 +1,4 @@
-import {Alert, StyleSheet} from 'react-native';
+import {Alert, Button, Pressable, StyleSheet} from 'react-native';
 
 import {Text, View} from '../../components/Themed';
 import React, {useEffect, useMemo, useRef, useState} from "react";
@@ -11,6 +11,8 @@ import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 import {heightDP} from '../../constants/DpScaling';
 import ShowPointsPopup from "../../components/Popups/ShowPointsPopup";
+import moment from "moment";
+import {Ionicons} from "@expo/vector-icons";
 
 export const WATER = "water";
 export const SQUATS = "squats";
@@ -90,12 +92,34 @@ export default function Habits() {
     const [waterLoading, setWaterLoading] = useState(true);
     const [squatsLoading, setSquatsLoading] = useState(true);
     const [meditationLoading, setMeditationLoading] = useState(true);
+    const [reload, setReload] = useState(false);
     const allSiblingsLoaded = !waterLoading && !squatsLoading && !meditationLoading;
+    const [componentKey, setComponentKey] = useState(moment().format())
+    const [canPressReload, setCanPressReload] = useState(true);
+
+    useEffect(() => {
+        setComponentKey(moment().format())
+    }, [reload])
+
+    const handleReload = () => {
+        if (canPressReload) {
+            setReload(prevState => !prevState);
+            setCanPressReload(false);
+            setTimeout(() => {
+                setCanPressReload(true);
+            }, 2000);
+        }
+    };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.textLeft}>Abbruchrate{"\n"}aller{"\n"}Nutzer</Text>
-            <Text style={styles.textRight}>Deine{"\n"}Streak</Text>
+        <View key={componentKey} style={styles.container}>
+            <Pressable
+                onPress={handleReload}
+            >
+                <Ionicons name="reload-circle-sharp" size={heightDP("6%")} color="black"/>
+            </Pressable>
+            <Text style={[styles.textStyle, styles.textLeft]}>Abbruchrate{"\n"}aller{"\n"}Nutzer</Text>
+            <Text style={[styles.textStyle, styles.textRight]}>Deine{"\n"}Streak</Text>
             <HabitSummary
                 habitName={WATER}
                 logo={<WaterLogo position={"absolute"} top={heightDP("4.3%")} width={heightDP("12%")}
@@ -106,7 +130,7 @@ export default function Habits() {
             />
             <HabitSummary
                 habitName={SQUATS}
-                logo={<SquatsLogo position={"absolute"} top={heightDP("-0.3%")} left={heightDP("2.7%")}
+                logo={<SquatsLogo position={"absolute"} top={heightDP("-0.3%")} left={heightDP("2%")}
                                   width={heightDP("21%")} height={heightDP("21%")}/>}
                 onLoading={setSquatsLoading}
                 allSiblingsLoaded={allSiblingsLoaded}
@@ -124,13 +148,6 @@ export default function Habits() {
     );
 }
 
-const textStyle = {
-    position: "absolute",
-    top: heightDP("1.5%"),
-    fontSize: heightDP("2.65%"),
-    fontWeight: "bold"
-};
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -138,14 +155,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    // @ts-ignore
+    textStyle: {
+        position: "absolute",
+        top: heightDP("1.5%"),
+        fontSize: heightDP("2.65%"),
+        fontWeight: "bold"
+    },
     textLeft: {
-        ...textStyle,
         left: 18,
     },
-    // @ts-ignore
     textRight: {
-        ...textStyle,
         right: 18,
     },
 });
+

@@ -60,7 +60,7 @@ const triggerSquatsNotifications = async () => {
     for (let i = 0; i < hours.length; i++) {
         await Notifications.scheduleNotificationAsync({
             content: {
-                title: "Hoch mit dir, faule Socke!",
+                title: "Hoch mit dir, faule Socke, Kniebeugen!",
                 body: " \"Nicht schon wieder\"... oh doch! Öffne mich, ran an den Speck!",
             },
             trigger: {
