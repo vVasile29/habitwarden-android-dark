@@ -10,7 +10,6 @@ import {API, USER_KEY} from "../context/AuthContext";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 import {heightDP} from '../../constants/DpScaling';
-import ShowPointsPopup from "../../components/Popups/ShowPointsPopup";
 import moment from "moment";
 import {Ionicons} from "@expo/vector-icons";
 
@@ -113,13 +112,23 @@ export default function Habits() {
 
     return (
         <View key={componentKey} style={styles.container}>
-            <Pressable
-                onPress={handleReload}
-            >
-                <Ionicons name="reload-circle-sharp" size={heightDP("6%")} color="black"/>
-            </Pressable>
-            <Text style={[styles.textStyle, styles.textLeft]}>Abbruchrate{"\n"}aller{"\n"}Nutzer</Text>
-            <Text style={[styles.textStyle, styles.textRight]}>Deine{"\n"}Streak</Text>
+            <View style={{width: "100%", display: "flex", flexDirection: "row"}}>
+                <Text style={[styles.textStyle, styles.textLeft]}>Abbruchrate{"\n"}aller Nutzer</Text>
+                <View style={{flex: 1, alignItems: "center"}}>
+                    <Pressable
+                        onPress={handleReload}
+                    >
+                        <Ionicons
+                            name={canPressReload ? "reload-circle-sharp" : "reload-circle-outline"}
+                            size={heightDP("6%")}
+                            color="black"
+                        />
+                    </Pressable>
+                </View>
+                <View style={{flex: 1, alignItems: "flex-end"}}>
+                    <Text style={[styles.textStyle, styles.textRight]}>Deine{"\n"}Streak</Text>
+                </View>
+            </View>
             <HabitSummary
                 habitName={WATER}
                 logo={<WaterLogo position={"absolute"} top={heightDP("4.3%")} width={heightDP("12%")}
@@ -153,19 +162,19 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
+        height: "100%"
     },
     textStyle: {
-        position: "absolute",
-        top: heightDP("1.5%"),
+        flex: 1,
         fontSize: heightDP("2.65%"),
         fontWeight: "bold"
     },
     textLeft: {
-        left: 18,
+        left: 14
     },
     textRight: {
-        right: 18,
+        right: 14
     },
 });
 
