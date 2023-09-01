@@ -43,7 +43,7 @@ export default function LosePointsPopup(props: LosePointsPopupProps) {
 const styles = StyleSheet.create({
     pressable: {
         alignItems: 'center',
-        backgroundColor: '#4c6ef5',
+        backgroundColor: '#24a0ed',
         padding: 10,
         width: "100%",
         borderColor: "black",

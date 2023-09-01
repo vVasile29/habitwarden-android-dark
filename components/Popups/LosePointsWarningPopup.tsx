@@ -49,7 +49,7 @@ export default function LosePointsWarningPopup(props: LosePointsWarningPopupProp
                                     gap: widthDP("1%")
                                 }}>
                                 <Pressable
-                                    style={[styles.pressable, {backgroundColor: props.shameCheckbox ? '#4c6ef5' : 'grey'}]}
+                                    style={[styles.pressable, {backgroundColor: props.shameCheckbox ? '#24a0ed' : 'grey'}]}
                                     disabled={!props.shameCheckbox}
                                     onPress={() => {
                                         if (props.shameCheckbox) {
